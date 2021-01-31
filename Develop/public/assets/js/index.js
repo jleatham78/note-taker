@@ -1,7 +1,3 @@
-const router = require('express').Router();
-const path = require('path');
-
-
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -181,17 +177,5 @@ if (window.location.pathname === '/notes') {
   noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
 
-//get notes file
-router.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../public/notes.html'));
-});
-
-//get index file
-router.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../public/index.html'));
-});
-
-
 getAndRenderNotes();
 
-module.exports = router

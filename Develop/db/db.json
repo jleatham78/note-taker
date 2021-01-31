@@ -1,8 +1,4 @@
-{
-    "notes": [
-        {
-            "title": "test",
-            "text": "test text"
-        }
-    ]
-}
+[{"title":"It works","text":"Congrats!"},{"title":"Second test","text":"You did it"},
+[{"title":"It works","text":"Congrats!"},{"title":"Second test","text":"You did it"},{"title":"test","text":"yay!"},{"title":"test3","text":"yay3!"}],
+[{"title":"It works","text":"Congrats!"},{"title":"Second test","text":"You did it"},{"title":"test","text":"yay!"},{"title":"test3","text":"yay3!"},{"title":"test4","text":"yay4!"}],
+[{"title":"It works","text":"Congrats!"},{"title":"Second test","text":"You did it"}],{"title":"a;sdlkfjasdf","text":"asdff"},{"title":"asdfasdf","text":"asdf"}]
