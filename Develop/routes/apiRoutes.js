@@ -1,22 +1,25 @@
 const router = require('express').Router();
 const path = require('path');
+const util = require('util');
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const notesApi = require('../db/db.json')
 
+const readFile = util.promisify(fs.readFile);
+
+const writeFile = util.promisify(fs.writeFile);
 
 const getNotes = function() {
-    return JSON.parse(fs.readFileSync('./db/db.json', 'utf-8'));
+    return readFile('./db/db.json', 'utf8');
 }
 
 const writeNotes = function() {
-    JSON.stringify(fs.writeFileSync('./db/db.json'));
+    return writeFile('./db/db.json', JSON.stringify(notesApi));
 }
 
-const writeValues = function(values) {
-    JSON.stringify(fs.writeFileSync('./db/db.json'));
-    
-}
+// const writeValues = function(values) {
+//     JSON.stringify(fs.writeFileSync('./db/db.json'));
+// }
 
 
 router.get('/notes', (req, res) => {
@@ -33,13 +36,13 @@ router.post('/notes', (req, res) => {
     res.json(updatedNote);
 });
 
-
 router.delete('/notes/:id', (req, res) => {
     const id = req.params.id
     let notes = getNotes(); 
-    let updatedNotes = notes.filter(note => note.id === id);
-    writeValues(updatedNotes);
+    let updatedNotes = notes.filter(note => note.id !== id);
+    writeNotes(updatedNotes);
     res.json(updatedNotes);  
+    getNotes()
    
 });
 
